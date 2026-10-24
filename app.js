@@ -220,7 +220,7 @@ async function downloadExtension(){
   setStatus(`Packaging SkyRibbon for ${state.city.name}…`);
   try{
     const entries=await Promise.all(WEATHER_FILES.map(async path=>{
-      const res=await fetch(`extension/${path}`,{cache:'no-store'});
+      const res=await fetch(path.startsWith('icons/') ? path.slice(6) : path,{cache:'no-store'});
       if(!res.ok)throw new Error(`Missing extension file: ${path}`);
       if(path==='config.json')return ['SkyRibbon/config.json',JSON.stringify({...state.city,unit:state.units},null,2)+'\n'];
       return [`SkyRibbon/${path}`,new Uint8Array(await res.arrayBuffer())];
