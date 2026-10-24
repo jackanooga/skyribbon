@@ -1,35 +1,37 @@
-# SkyRibbon — Weather for Google Calendar
+# SkyRibbon · v1.2.0
 
-**Free static website + personalized Chrome extension.** A weather strip above Google Calendar's day labels / all-day events. Low/high temperatures, weather emoji, and a user-selected city.
+SkyRibbon is a free Chrome extension that places a weather ribbon in Google Calendar. It works for any city; change your city and °F/°C in the toolbar popup.
 
-## Publish the free website via GitHub Pages
+## Publish this website for free
 
-1. Create a new **public** GitHub repository, for example `skyribbon`.
-2. Upload **the contents of this project folder** to the **root** of the repository (not a nested parent folder). This includes `index.html`, `styles.css`, `app.js`, `favicon.svg`, `privacy.html` and the entire `extension` folder.
-3. In the repository go to **Settings → Pages → Build and deployment** and choose **Deploy from a branch**, branch `main`, folder `/ (root)`. Save.
-4. GitHub gives you a free URL of the form `https://YOUR-USERNAME.github.io/skyribbon/` after publication. No custom domain needed.
-5. Test choosing a city, switching units, and downloading the ZIP. Unzip and install using `chrome://extensions` → Developer mode → Load unpacked → select the **SkyRibbon** folder.
+1. Extract `SkyRibbon_Website_v1_2.zip`.
+2. Visit your public `jackanooga/skyribbon` repository, and upload **all the files inside the extracted folder** to the repository ROOT. Important: `SkyRibbon_Extension.zip` is a **file**, not a folder. It must stay zipped.
+3. Choose replace/overwrite when GitHub identifies existing files, then commit the changes.
+4. Wait until GitHub Pages deployment is complete and visit https://jackanooga.github.io/skyribbon/.
+5. Verify the download button works by opening https://jackanooga.github.io/skyribbon/SkyRibbon_Extension.zip directly.
 
-**If you already installed the Denver-only extension, disable or remove it before enabling SkyRibbon** to avoid duplicate weather rows.
+The old `app.js`, `manifest.json`, `icons`, and other unused files in your root are not required by this release. They can remain for now. The new website does not load app.js or fetch individual extension files.
 
-**Note:** The website must be served over `http://` or `https://`; opening `index.html` directly using `file://` disables some browsers' fetch/download behavior. For local preview, run `python3 -m http.server 8000` from the project folder and open `http://localhost:8000/`.
+## Install the extension manually
 
-## How city-specific downloads work
+1. Download `SkyRibbon_Extension.zip` from the site and unzip it.
+2. Open `chrome://extensions`, enable Developer mode, and select **Load unpacked**.
+3. Select the extracted `SkyRibbon` folder (the one containing `manifest.json`).
+4. Pin the extension in Chrome, click it, and search for any city. Select °F or °C.
+5. Reload Google Calendar once after installing. City or temperature changes should then update the ribbon automatically.
 
-Everything happens locally in the visitor's browser: `app.js` downloads the 11 public extension assets from `/extension/`, replaces `config.json` with selected city coordinates/timezone/°F/°C, and builds a valid uncompressed ZIP using an embedded ZIP writer. No server-side compilation, registration, payments, or API keys are necessary.
+If you have an older SkyRibbon or Denver Calendar Weather extension installed, **remove or disable the old one** to avoid duplicate ribbons.
 
-After installing, a user can change their location or temperature unit from the extension popup. The extension stores settings only in local Chrome extension storage. Weather comes from Open-Meteo.
+## Project files
 
-## Compatibility
+- `index.html`, `styles.css`, `favicon.svg`: minimal landing page
+- `SkyRibbon_Extension.zip`: one universal extension for everyone
+- `privacy.html`: transparent privacy explanation
 
-- Desktop Chrome, Google Calendar calendar views. Not mobile Chrome or standalone Google Tasks.
-- Original functional ribbon architecture based on Denver Calendar Weather v1.0.3, **including the Tasks overlay fix** (no floating fallback).
-- Up to 16 forecast days; beyond that weather badges may not appear.
-- Google's calendar UI is undocumented and may change, requiring future adjustments.
-- Manual updates for users who installed from a ZIP rather than Chrome Web Store.
+The extension uses the free noncommercial Open-Meteo weather/geocoding APIs, without accounts or a server. Review Open-Meteo terms before scaling or monetizing the site.
 
-## Usage & licenses
+## Troubleshooting
 
-SkyRibbon is intended as a **noncommercial** utility. Open-Meteo's free service has usage restrictions; check https://open-meteo.com/en/pricing and attribution requirements before launch and as usage grows. Geocoding includes GeoNames-based location data.
-
-Privacy policy: `privacy.html`. This is independent software, not affiliated with Google. Do not describe it as a Chrome Web Store installation.
+- If the download link fails, confirm the root-level `SkyRibbon_Extension.zip` is uploaded and the Pages deployment is complete. File names are case sensitive.
+- If Chrome says 'Manifest file is missing or unreadable', open the extracted ZIP and select the inner `SkyRibbon` folder, not the ZIP or its parent folder.
+- If weather fails to appear, reload Google Calendar, verify weather is enabled in the popup, and disable any earlier weather-extension installations.

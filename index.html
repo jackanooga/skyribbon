@@ -2,96 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fdfcf8">
-  <meta name="description" content="SkyRibbon brings an easy-to-read weather forecast right above your Google Calendar. Pick a city and download your free Chrome extension.">
-  <title>SkyRibbon — A little forecast for your big plans.</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#faf9f6">
+  <meta name="description" content="SkyRibbon brings the daily weather forecast into Google Calendar, without cluttering your events. Free for Chrome.">
+  <meta property="og:title" content="SkyRibbon — Weather, right on your calendar">
+  <meta property="og:description" content="Your weather, right above your plans. Free Chrome extension for Google Calendar.">
+  <title>SkyRibbon — Weather, right on your calendar</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
 </head>
 <body>
-  <div class="page-confetti confetti-one" aria-hidden="true"></div>
-  <div class="page-confetti confetti-two" aria-hidden="true"></div>
-  <header class="site-header shell">
-    <a class="wordmark" href="#top" aria-label="SkyRibbon home">
-      <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 54 54" fill="none"><rect x="4" y="7" width="46" height="41" rx="14" fill="#4285F4"/><path d="M15 28c0-5 4-9 9-9 3 0 6 1 8 4 5-1 10 3 10 8 0 4-3 7-8 7H22c-4 0-7-3-7-7v-3Z" fill="white"/><path d="M31 13v5M40 18l-4 3M25 14l2 5" stroke="#FBBC05" stroke-width="3" stroke-linecap="round"/></svg></span>
-      <span>sky<span class="wordmark-color">ribbon</span><span class="wordmark-period">.</span></span>
-    </a>
-    <nav class="nav-links" aria-label="Main navigation">
-      <a href="#how-it-works">How it works</a>
-      <a href="#questions">FAQs</a>
-      <a class="nav-pill" href="#get-started">Get the extension <span aria-hidden="true">↗</span></a>
-    </nav>
+  <div class="confetti c-red" aria-hidden="true"></div><div class="confetti c-yellow" aria-hidden="true"></div>
+  <div class="confetti c-blue" aria-hidden="true"></div><div class="confetti c-green" aria-hidden="true"></div>
+  <header class="site-header wrap">
+    <a class="logo" href="#top" aria-label="SkyRibbon home"><span class="logo-art" aria-hidden="true"><svg viewBox="0 0 45 45" fill="none"><path d="M8 28a10 10 0 0 1 9-9.9A12.8 12.8 0 0 1 41 23a9.1 9.1 0 0 1-3.9 17H14a10.6 10.6 0 0 1-6-12Z" fill="#fff"/><path d="M15 12a9.5 9.5 0 0 1 18.3-3.6" stroke="#FBBC05" stroke-width="4.6" stroke-linecap="round"/><path d="M7 25c.6-5.5 4.8-9.5 10.4-9.5a12 12 0 0 1 22.9 6.5A9 9 0 0 1 37 39H14a10 10 0 0 1-7-14Z" stroke="#4285F4" stroke-width="3" stroke-linejoin="round"/></svg></span><span>SkyRibbon<span class="logodot">.</span></span></a>
+    <nav aria-label="Main navigation"><a href="#install">How it works</a><a class="coffee-link" href="https://buymeacoffee.com/jackanooga" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">☕</span> Buy me a coffee <span aria-hidden="true">↗</span></a></nav>
   </header>
-
   <main id="top">
-    <section class="hero shell" aria-labelledby="headline">
+    <section class="hero wrap">
       <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-spark">✳</span> FOR THE PLANNERS & THE SKY-WATCHERS</div>
-        <h1 id="headline">Your calendar,<br>with a little <span class="sunshine">sunshine<span class="sun-doodle" aria-hidden="true">☀</span></span><span class="period">.</span></h1>
-        <p class="hero-description">Your forecast shouldn't get lost in your plans. SkyRibbon gives Google Calendar a colorful little weather strip with each day's low, high, and sky.</p>
-        <div class="hero-actions"><a href="#get-started" class="button button-blue">Get SkyRibbon — it's free <span aria-hidden="true">↗</span></a><a href="#preview" class="button button-text">See it in action <span aria-hidden="true">↓</span></a></div>
-        <div class="hero-facts"><span><span class="fact-check">✓</span> Free, forever</span><span><span class="fact-check">✓</span> No sign-in</span><span><span class="fact-check">✓</span> Your city, your forecast</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE WEATHER FOR YOUR BIG PLANS</div>
+        <h1>Weather, right on <span class="highlight">your calendar<span class="highlight-line" aria-hidden="true"></span></span><span class="period">.</span></h1>
+        <p class="lead">See the daily forecast above your Google Calendar. One glance, zero clutter.</p>
+        <a class="download" href="SkyRibbon_Extension.zip" download="SkyRibbon_Extension.zip"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg> Download for Chrome <span aria-hidden="true">↗</span></a>
+        <div class="under-download"><span class="green-tick" aria-hidden="true">✓</span> Free forever <span class="tiny-divider"></span> Any city <span class="tiny-divider"></span> °F or °C</div>
       </div>
-      <div class="hero-illustration" aria-label="Illustration of weather added to a calendar">
-        <div class="big-blue-circle" aria-hidden="true"></div>
-        <div class="hero-star star-left" aria-hidden="true">✳</div>
-        <div class="hero-star star-right" aria-hidden="true">✦</div>
-        <div class="hero-calendar">
-          <div class="fake-header"><div class="fake-calendar-icon"><div class="icon-rings"></div><strong>24</strong></div><span>October 2026</span><div class="fake-dots"><i></i><i></i><i></i></div></div>
-          <div class="fake-days"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span></div>
-          <div class="fake-forecast" id="hero-weather"><span>☀️ 44°/67°</span><span>⛅ 42°/64°</span><span>🌦️ 41°/59°</span><span>☁️ 38°/61°</span><span>☀️ 45°/70°</span></div>
-          <div class="fake-numbers"><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span></div>
-          <div class="fake-events"><div class="event-chip yellow-chip">Morning coffee ☕</div><div class="event-chip green-chip">A good day to get outside</div><div class="event-chip red-chip">Make some plans ✨</div></div>
+      <div class="hero-art" aria-label="Illustration of SkyRibbon's forecast displayed above calendar days">
+        <span class="spark spark-yellow" aria-hidden="true">✳</span><span class="spark spark-red" aria-hidden="true">●</span>
+        <div class="calendar-frame">
+          <div class="mock-top"><div class="mock-dots" aria-hidden="true"><i></i><i></i><i></i></div><span><span class="mini-calendar">▦</span> My calendar</span><span class="mock-menu" aria-hidden="true">•••</span></div>
+          <div class="mock-content"><div class="mock-weather">
+            <div class="forecast-pill">☀️ <span>45°/70°</span></div><div class="forecast-pill">🌤️ <span>48°/72°</span></div><div class="forecast-pill">☁️ <span>46°/65°</span></div><div class="forecast-pill">🌦️ <span>43°/61°</span></div><div class="forecast-pill">☀️ <span>52°/73°</span></div>
+          </div><div class="mock-days"><div><span>MON</span><strong>26</strong></div><div><span>TUE</span><strong>27</strong></div><div><span>WED</span><strong>28</strong></div><div><span>THU</span><strong>29</strong></div><div><span>FRI</span><strong>30</strong></div></div>
+          <div class="events-grid" aria-hidden="true"><span class="event yellow">Weekly planning</span><span class="event blue">Team check-in</span><span class="event green">Lunch with friends</span><span class="event red">Friday!</span></div>
+          </div>
         </div>
-        <div class="floating-sun" aria-hidden="true"><span>☀</span></div>
-        <div class="floating-note" aria-hidden="true">Forecast, meet calendar! <span>↗</span></div>
+        <div class="mini-sticker"><span>✨</span> Forecast first.<br>Plans second.</div>
       </div>
     </section>
-
-    <div class="ticker" aria-label="A little sunshine for every schedule"><div>☀ A LITTLE SUNSHINE FOR EVERY SCHEDULE <span>✳</span> ☁ A FORECAST THAT FITS YOUR DAY <span>✳</span> ☀ A LITTLE SUNSHINE FOR EVERY SCHEDULE <span>✳</span> ☁ A FORECAST THAT FITS YOUR DAY <span>✳</span></div></div>
-
-    <section id="get-started" class="config-section shell" aria-labelledby="setup-headline">
-      <div class="section-heading"><span class="section-kicker"><span class="tiny-star">✳</span> MAKE IT YOURS</span><h2 id="setup-headline">Let's find your <span class="wavy-blue">sky.</span></h2><p>One city, one click, and your calendar gets a little brighter.</p></div>
-      <div class="config-layout">
-        <div class="config-card">
-          <span class="step-counter">01 / YOUR LOCATION</span>
-          <h3>Where's your weather?</h3>
-          <p>Start typing your city. We'll find the right spot on the map.</p>
-          <div class="location-form">
-            <label for="city-input">CITY OR TOWN</label>
-            <div class="search-container"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="city-input" type="search" role="combobox" aria-expanded="false" aria-controls="city-results" aria-autocomplete="list" placeholder="Try Savannah, Georgia" value="Denver" autocomplete="off"><span class="search-loading" id="search-loading" hidden>◌</span></div>
-            <div id="city-results" class="city-results" role="listbox" hidden></div>
-            <div class="current-city"><span class="location-pin">●</span><span id="selected-city">Denver, Colorado, United States</span><span class="selected-check">✓</span></div>
-            <div class="settings-row"><div><label for="units">TEMPERATURE</label><p>Choose how you read the weather.</p></div><select id="units"><option value="fahrenheit">°F — Fahrenheit</option><option value="celsius">°C — Celsius</option></select></div>
-          </div>
-          <button id="download" class="button button-blue download-btn" type="button"><span>Download my extension</span><span aria-hidden="true">↗</span></button>
-          <p class="download-status" id="download-status" role="status" aria-live="polite">Free to use · Made for desktop Chrome · No account needed</p>
-        </div>
-        <div class="preview-card" id="preview">
-          <div class="preview-top"><div><span class="live-dot"></span> YOUR CALENDAR PREVIEW</div><span class="preview-live" id="preview-indicator">Live weather</span></div>
-          <h3>A little peek at <span id="preview-city">Denver</span>.</h3>
-          <p>Here's how SkyRibbon will look at the top of your week.</p>
-          <div class="calendar-preview">
-            <div class="cal-toolbar"><div class="cal-logo"><span class="cal-logo-blue">3</span><span class="cal-logo-green">1</span></div><span id="calendar-month">October 2026</span><span class="cal-mini-actions">‹　›　⋮</span></div>
-            <div class="cal-weather" id="preview-weather" aria-live="polite"></div>
-            <div class="cal-days" id="preview-days"></div>
-            <div class="cal-dates" id="preview-dates"></div>
-            <div class="cal-events"><span class="cal-event blue-event">Make the most of today</span><span class="cal-event yellow-event">Coffee with a friend</span><span class="cal-event green-event">Fresh air break</span></div>
-          </div>
-          <div class="preview-caption"><span>↗</span> Weather stays above your events, never in the way.</div>
-          <p class="preview-error" id="forecast-status" aria-live="polite"></p>
-        </div>
+    <section id="install" class="install wrap" aria-labelledby="install-title">
+      <div class="install-heading"><span class="eyebrow">GET STARTED</span><h2 id="install-title">Three steps. <span>That's it.</span></h2></div>
+      <div class="step-grid">
+        <div class="step"><span class="step-num blue">01</span><h3>Download & unzip</h3><p>Grab SkyRibbon above and extract the ZIP file.</p></div>
+        <div class="step"><span class="step-num yellow">02</span><h3>Add to Chrome</h3><p>Open <code>chrome://extensions</code>, enable <strong>Developer mode</strong>, then <strong>Load unpacked</strong>. Select the SkyRibbon folder.</p></div>
+        <div class="step"><span class="step-num green">03</span><h3>Pick your city</h3><p>Pin SkyRibbon to your toolbar, click it, and search for your city. Your calendar updates automatically.</p></div>
       </div>
     </section>
-
-    <section id="how-it-works" class="how-section" aria-labelledby="how-title"><div class="shell"><div class="section-heading"><span class="section-kicker">THE SIMPLE STUFF</span><h2 id="how-title">Three steps to <span class="wavy-red">better days.</span></h2><p>No complicated setup. Just a little copy-and-paste-free sunshine.</p></div><div class="steps-grid"><article class="step-box"><span class="step-shape blue-shape">⌖</span><div class="step-index">01</div><h3>Pick your place.</h3><p>Choose your city and temperature unit to personalize your forecast.</p></article><article class="step-box"><span class="step-shape yellow-shape">⇩</span><div class="step-index">02</div><h3>Grab the extension.</h3><p>Download and unzip your personal SkyRibbon folder. It takes a few clicks.</p></article><article class="step-box"><span class="step-shape green-shape">☀</span><div class="step-index">03</div><h3>Watch your week shine.</h3><p>Load it into Chrome, refresh Google Calendar, and enjoy your new weather strip.</p></article></div><div class="install-guide"><div class="guide-label">✳ ONE-TIME INSTALLATION</div><ol><li>Unzip the download.</li><li>In Chrome, open <code>chrome://extensions</code> and turn on <strong>Developer mode</strong>.</li><li>Choose <strong>Load unpacked</strong> and select the <code>SkyRibbon</code> folder.</li><li>Open <a href="https://calendar.google.com/" target="_blank" rel="noopener">Google Calendar ↗</a> and refresh. That's it!</li></ol><div class="guide-aside">Chrome Web Store publishing requires a developer fee. This free version uses Chrome's manual installation instead.</div></div></div></section>
-
-    <section class="color-section shell"><div class="color-banner"><div class="color-banner-copy"><span>BUILT FOR YOUR EVERYDAY</span><h2>Less checking.<br>More <em>living.</em></h2><p>Know if it's a shorts day, a raincoat day, or a stay-inside-with-coffee day before you make plans.</p><a href="#get-started" class="button button-white">Make my calendar brighter <span aria-hidden="true">↗</span></a></div><div class="color-sun" aria-hidden="true">☀</div><div class="color-cloud" aria-hidden="true">☁</div><div class="color-star" aria-hidden="true">✳</div></div></section>
-
-    <section id="questions" class="faq-section shell"><div class="section-heading"><span class="section-kicker">GOOD TO KNOW</span><h2>Little questions,<br><span class="wavy-yellow">clear skies.</span></h2></div><div class="faq-grid"><details><summary>Is it really free?<span>+</span></summary><p>Yes. SkyRibbon is a free, noncommercial project. There are no subscriptions, ads, or accounts. The weather is powered by Open-Meteo's free noncommercial API, subject to their limits.</p></details><details><summary>Does it read my Google Calendar events?<span>+</span></summary><p>No. SkyRibbon changes how Google Calendar is displayed in your browser to add a forecast strip. It doesn't sign into your Google account or send your calendar events to a server.</p></details><details><summary>Can I change my city later?<span>+</span></summary><p>Yes! Open SkyRibbon from the Chrome toolbar and search for another city. You can change the temperature unit there too.</p></details><details><summary>Will it work on my phone?<span>+</span></summary><p>Not yet. This extension is designed for desktop Google Calendar in Chrome.</p></details><details><summary>Why do I need Developer mode?<span>+</span></summary><p>Publishing through the Chrome Web Store requires a one-time fee. To keep SkyRibbon completely free to launch, you install its unpacked extension manually. Only install software from sources you trust.</p></details><details><summary>How far ahead can I see weather?<span>+</span></summary><p>Up to 16 days, depending on the forecast service and which dates are visible in your calendar. Dates outside the forecast window won't show weather badges.</p></details></div></section>
+    <section class="closing wrap"><div><span aria-hidden="true">🌤️</span><strong>Bright forecasts. Better plans.</strong></div><a href="SkyRibbon_Extension.zip" download="SkyRibbon_Extension.zip">Get SkyRibbon <span aria-hidden="true">↗</span></a></section>
   </main>
-  <footer class="footer"><div class="shell footer-inner"><a class="wordmark" href="#top"><span>sky<span class="wordmark-color">ribbon</span><span class="wordmark-period">.</span></span></a><p>Made for better days. Powered by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> weather data and <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a> locations.</p><span><a href="privacy.html">Privacy</a> · Not affiliated with Google.</span></div></footer>
+  <footer class="wrap"><span>Made with ☀️ by SkyRibbon · Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></span><span><a href="privacy.html">Privacy</a> <span class="foot-sep">·</span> <a href="https://buymeacoffee.com/jackanooga" target="_blank" rel="noopener noreferrer">☕ Support the project</a></span></footer>
 </body>
 </html>
