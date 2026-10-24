@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main>
+    <div class="eyebrow" id="city-label">YOUR FORECAST</div>
+    <h1>☁️ SkyRibbon</h1>
+    <p class="intro">A little forecast for your big plans.</p>
+    <div class="weather-today" id="today" aria-live="polite">Loading forecast…</div>
+    <label class="toggle-row" for="enabled"><span>Show weather in Google Calendar</span><input id="enabled" type="checkbox" checked /></label>
+    <div class="location-section">
+      <label for="city-search">Change city</label>
+      <input type="search" id="city-search" placeholder="Search for a city" autocomplete="off" />
+      <div id="city-results" role="listbox" hidden></div>
+      <label class="unit-label" for="unit">Temperature</label>
+      <select id="unit"><option value="fahrenheit">Fahrenheit °F</option><option value="celsius">Celsius °C</option></select>
+    </div>
+    <button id="refresh" type="button">↻ Refresh forecast</button>
+    <p class="fine">Daily low / high · Up to 16 days<br>Data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>. No Google account access required.</p>
+    <p id="status" class="status" aria-live="polite"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
