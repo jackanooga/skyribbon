@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#faf9f6">
+  <meta name="description" content="SkyRibbon is a free Google Calendar weather extension for Chrome. See daily forecasts for any city above your calendar without adding events.">
+  <meta property="og:title" content="SkyRibbon — Free Google Calendar Weather Extension">
+  <meta property="og:description" content="Daily weather above your Google Calendar. Free for Chrome, with any city and °F or °C. No extra calendar events.">
+  <title>SkyRibbon — Free Google Calendar Weather Extension for Chrome</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://skyribbon.xyz/">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://skyribbon.xyz/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SkyRibbon — Free Google Calendar Weather Extension">
+  <meta name="twitter:description" content="See your daily weather above Google Calendar. Free for Chrome, any city, zero event clutter.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SkyRibbon",
+    "url": "https://skyribbon.xyz/",
+    "description": "A free Chrome extension that displays daily weather forecasts above Google Calendar without creating calendar events.",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Google Chrome",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  </script>
+  <!-- SkyRibbon styles are embedded to avoid stylesheet loading/caching failures. -->
+  <style>
+:root{--ink:#183153;--muted:#5f7189;--blue:#4285f4;--red:#ea4335;--yellow:#fbbc05;--green:#34a853;--cream:#faf9f6;--border:#e8e9ea;font-family:Arial,"Helvetica Neue",sans-serif;font-synthesis:none;scroll-behavior:smooth}
+*{box-sizing:border-box}body{background:var(--cream);margin:0;color:var(--ink);overflow-x:hidden}a{text-decoration:none;color:inherit}.wrap{width:min(1160px,calc(100% - 64px));margin-inline:auto}.site-header{height:100px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}.logo{display:flex;align-items:center;font-size:25px;font-weight:800;letter-spacing:-1.3px;gap:11px}.logo-art{display:grid;place-items:center;width:47px;height:47px;border-radius:16px;background:#eaf3ff}.logo-art svg{width:38px;height:38px}.logodot{color:var(--red)}nav{display:flex;align-items:center;gap:36px;font-weight:700;font-size:13px}nav>a:first-child{color:#596e86}nav>a:hover{color:var(--blue)}.coffee-link{padding:12px 17px;border:1px solid #e2e3e1;border-radius:999px;background:#fff;color:var(--ink);box-shadow:0 3px 9px #00000008}nav .coffee-link:hover{background:#fff9e8;color:var(--ink)}
+.hero{min-height:578px;display:grid;grid-template-columns:47% 53%;align-items:center;gap:5px;position:relative;padding:38px 0 60px}.hero-copy{z-index:1;padding-bottom:23px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#6b7b92;display:flex;align-items:center;gap:10px}.eyebrow-dot{width:11px;height:11px;border-radius:50%;display:inline-block;background:var(--green);box-shadow:inset -2px -2px 0 #148038}.hero h1{font-size:clamp(46px,5.3vw,76px);line-height:1.08;letter-spacing:-3.7px;margin:23px 0 22px;font-weight:800;max-width:570px}.highlight{position:relative;color:var(--blue);white-space:nowrap}.highlight-line{position:absolute;left:0;bottom:-7px;width:98%;height:8px;border-radius:60% 40% 50% 50%;background:var(--yellow);transform:rotate(-1.5deg)}.period{color:var(--red)}.lead{font-size:18px;line-height:1.6;color:var(--muted);max-width:420px;margin:0 0 30px}.download{display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:15px;background:var(--blue);color:#fff;padding:19px 24px;font-size:16px;font-weight:800;box-shadow:0 7px 0 #2b62c4;transition:transform .18s,box-shadow .18s}.download:hover{transform:translateY(-2px);box-shadow:0 9px 0 #2b62c4}.download:active{transform:translateY(5px);box-shadow:0 2px 0 #2b62c4}.under-download{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:21px;color:#718096;font-size:12px;font-weight:700}.feature-chip{display:inline-flex;align-items:center;gap:7px}.green-tick{color:var(--green);font-weight:900;font-size:13px;line-height:1}
+.hero-art{height:470px;display:flex;align-items:center;justify-content:center;position:relative}.calendar-frame{position:relative;width:100%;max-width:650px;background:white;border:1px solid #dde3ea;border-radius:24px;box-shadow:0 28px 64px #304a6e16,0 2px 0 #edf2f8;transform:rotate(1.1deg);overflow:hidden}.mock-top{display:flex;align-items:center;gap:10px;color:#5f6c80;border-bottom:1px solid #eef2f7;height:58px;padding:0 16px;font-size:12px;font-weight:700}.mock-dots{display:flex;gap:8px;margin-right:8px}.mock-dots i{display:block;width:8px;height:8px;border-radius:50%;background:#c8d0dc}.mock-dots i:nth-child(2),.mock-dots i:nth-child(3){background:#c8d0dc}.mini-calendar{margin-right:4px;color:#4285f4;font-size:16px}.mock-menu{margin-left:auto;letter-spacing:3px;color:#aeb8c7}.mock-content{padding:16px 10px 22px}.mock-weather,.mock-days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;text-align:center}.forecast-pill{white-space:nowrap;font-size:11px;font-weight:700;background:#dfe9ff;color:#2d62b4;border-radius:9px;padding:9px 2px;box-shadow:inset 0 0 0 1px #c7dafb}.forecast-pill span{vertical-align:middle}.mock-days{margin-top:0;border-top:1px solid #eef2f7}.mock-days div{display:flex;align-items:center;flex-direction:column;gap:8px;padding:12px 0 14px;border-right:1px solid #eef2f7}.mock-days div:last-child{border-right:0}.mock-days span{font-weight:700;letter-spacing:1.2px;color:#7d8898;font-size:10px}.mock-days strong{color:#263b59;font-size:29px;letter-spacing:-1px;font-weight:500}.events-grid{border-top:1px solid #e8edf5;display:grid;grid-template-columns:repeat(5,1fr);gap:0;min-height:124px;align-items:start}.event-col{padding:10px 8px 0;border-right:1px solid #eef2f7;min-height:124px}.event-col:last-child{border-right:0}.event{display:block;font-size:9.5px;font-weight:700;padding:8px 7px;border-radius:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:7px}.event.yellow{background:#fce8b2;color:#6f5711}.event.blue{background:#d2e3fc;color:#225da8}.event.green{background:#ceead6;color:#237b45}.event.red{background:#fad2cf;color:#ab3b34}.mini-sticker{position:absolute;z-index:1;bottom:8px;right:-12px;background:#fbbc05;border:3px solid #fff;border-radius:18px;padding:17px 22px;transform:rotate(-7deg);color:#563e00;font-size:15px;font-weight:800;line-height:1.4;box-shadow:0 10px 20px #1112}.mini-sticker span{display:block;font-size:24px;margin-bottom:3px}.spark{position:absolute;z-index:1}.spark-yellow{right:43px;top:12px;color:var(--yellow);font-size:67px;transform:rotate(12deg)}.spark-red{left:10px;bottom:20px;color:var(--red);font-size:25px}.confetti{position:absolute;pointer-events:none;opacity:.9}.c-red{width:20px;height:20px;border:5px solid var(--red);border-radius:50%;top:220px;left:3.5%}.c-yellow{width:14px;height:14px;background:var(--yellow);transform:rotate(28deg);top:170px;right:8%}.c-blue{width:12px;height:12px;background:var(--blue);border-radius:50%;top:505px;left:8%}.c-green{width:8px;height:30px;background:var(--green);transform:rotate(35deg);top:610px;right:5%}
+.install{padding:85px 0 92px;border-top:1px solid #e8e9e7}.install-heading{text-align:center}.install-heading .eyebrow{justify-content:center}.install h2{font-size:38px;letter-spacing:-1.7px;line-height:1.12;margin:12px 0 36px}.install h2 span{color:var(--blue)}.step-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.step{background:#fff;border:1px solid #e8eaf0;border-radius:20px;padding:27px 26px 23px;min-height:194px;box-shadow:0 4px 10px #1f375405}.step-num{display:inline-flex;border-radius:10px;min-width:46px;min-height:43px;align-items:center;justify-content:center;font-size:18px;font-weight:900}.step-num.blue{background:#e5efff;color:#3474d9}.step-num.yellow{background:#fff2c9;color:#9f7600}.step-num.green{background:#e4f6e9;color:#268a45}.step h3{font-size:17px;letter-spacing:-.35px;margin:21px 0 8px}.step p{color:#66758a;line-height:1.55;margin:0;font-size:13.5px}.step strong{color:#435a77}.step code{background:#eff4fc;padding:2px 5px;border-radius:4px;font-size:12px;color:#255eb2;white-space:nowrap}
+.closing{background:#eaf3ff;border-radius:23px;min-height:111px;display:flex;align-items:center;justify-content:space-between;padding:25px 33px;margin-bottom:51px}.closing div{display:flex;align-items:center;gap:13px}.closing div span{font-size:27px}.closing strong{font-size:20px;letter-spacing:-.6px}.closing>a{background:#fff;color:#2b70d1;font-weight:800;padding:14px 21px;border-radius:12px;box-shadow:0 3px 8px #153d8315;font-size:13px}.closing>a:hover{background:#f7faff}footer{border-top:1px solid #e7e7e7;padding:25px 0 36px;display:flex;justify-content:space-between;gap:20px;color:#76869b;font-size:12px}footer a:hover{color:var(--blue)}.foot-sep{margin:0 10px;color:#b8c4d2}
+@media(max-width:1100px){.hero h1{font-size:clamp(42px,5.6vw,62px);letter-spacing:-2.8px}.forecast-pill{font-size:10px}.hero{gap:0}.mini-sticker{right:-9px}}
+@media(max-width:780px){.wrap{width:min(620px,calc(100% - 38px))}.site-header{height:82px}.logo{font-size:23px}nav{gap:14px}nav>a:first-child{display:none}.coffee-link{font-size:11px;padding:11px 12px}.hero{padding:45px 0 80px;display:flex;flex-direction:column;min-height:0}.hero-copy{text-align:center;padding:0}.eyebrow{justify-content:center}.hero h1{margin:22px auto 17px;font-size:clamp(43px,8.7vw,63px);letter-spacing:-2.3px;max-width:620px}.lead{margin:0 auto 27px;font-size:16px}.under-download{justify-content:center}.hero-art{width:100%;height:350px;margin-top:20px}.calendar-frame{max-width:540px}.spark-yellow{right:8%;top:-7px}.mini-sticker{bottom:0;right:1%;font-size:12px;padding:10px 15px}.mini-sticker span{font-size:20px}.install{padding:64px 0}.step-grid{grid-template-columns:1fr;gap:13px}.step{min-height:0;padding:21px;display:grid;grid-template-columns:50px 1fr;align-items:start;gap:0 16px}.step-num{grid-row:span 2}.step h3{margin:0 0 7px}.step p{grid-column:2}.closing{margin-bottom:35px}.closing strong{font-size:16px}footer{flex-direction:column;align-items:center;text-align:center;gap:11px}}
+@media(max-width:480px){.wrap{width:calc(100% - 32px)}.logo-art{width:40px;height:40px}.logo-art svg{width:32px}.logo{gap:6px;font-size:20px}.coffee-link{font-size:0!important;padding:10px 12px}.coffee-link span{font-size:15px}.coffee-link span:last-child{font-size:0}.hero{padding:40px 0 57px}.eyebrow{font-size:9px;letter-spacing:1.2px}.hero h1{font-size:45px;letter-spacing:-2.5px}.hero .highlight{white-space:normal}.lead{font-size:15px}.download{font-size:15px;padding:17px 21px}.hero-art{height:270px}.calendar-frame{border-radius:15px}.mock-top{height:46px;padding:0 11px}.mock-content{padding:13px 6px 16px}.mock-weather,.mock-days{gap:3px}.forecast-pill{font-size:8px;letter-spacing:-.2px;padding:10px 0;border-radius:6px}.mock-days{margin-top:0}.mock-days div{gap:6px;padding:10px 0 8px}.mock-days span{font-size:8px}.mock-days strong{font-size:22px}.events-grid{min-height:82px}.event-col{padding:7px 4px 0;min-height:82px}.event{font-size:6.8px;padding:5px 3px;margin-bottom:4px}.mini-sticker{bottom:4px;right:-3px;font-size:9px;padding:6px 10px;border-radius:9px}.mini-sticker span{font-size:14px}.spark-yellow{font-size:34px;top:-5px}.install{padding:44px 0}.install h2{font-size:31px}.closing{padding:18px 15px;min-height:94px;gap:10px}.closing div{gap:6px}.closing div span{font-size:21px}.closing strong{font-size:13px;line-height:1.3}.closing>a{font-size:11px;padding:11px 9px;white-space:nowrap}}
+@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}.download{transition:none}}
+@media(max-width:480px){.c-yellow,.c-red{display:none}}
+
+  
+/* SkyRibbon departure-board headline — smoother split-flap animation, no libraries. */
+.hero h1.flip-heading{font-size:clamp(38px,4.2vw,60px);line-height:1.07;letter-spacing:-2.8px;margin:16px 0 25px;font-weight:800;max-width:620px}
+.flip-heading-intro,.flip-heading-outro{display:block}
+.flip-heading-outro{margin-top:13px;max-width:570px}
+.calendar-accent{color:#4285f4;white-space:nowrap}
+.flip-board-holder{position:relative;display:inline-block;max-width:100%;margin:20px 0 4px;vertical-align:middle}
+.city-comma{position:absolute;right:-22px;bottom:4px;color:#ea4335;font-size:clamp(44px,5vw,70px);line-height:.8}
+.departure-board{--tile-w:35px;--tile-h:52px;--tile-gap:4px;display:inline-flex;align-items:center;white-space:nowrap;transform:none;line-height:1;letter-spacing:0;padding:0;background:transparent;border:0;box-shadow:none}
+.departure-letters{display:flex;gap:var(--tile-gap);isolation:isolate}
+.flap-letter{width:var(--tile-w);height:var(--tile-h);position:relative;display:inline-block;flex:none;perspective:700px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:27px;font-weight:800;letter-spacing:0;text-shadow:0 1px 0 #0002;filter:drop-shadow(0 5px 9px #23364c12)}
+.flap-half{position:absolute;left:0;width:100%;height:50%;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform}
+.flap-half.top{top:0;border-radius:4px 4px 1px 1px;background:linear-gradient(180deg,#31465e 0%,#30455e 100%);border-bottom:0}
+.flap-half.bottom{bottom:0;border-radius:1px 1px 4px 4px;background:linear-gradient(180deg,#30455e 0%,#2f445c 100%)}
+.flap-glyph{position:absolute;left:0;width:100%;height:200%;display:flex;justify-content:center;align-items:center;line-height:1;white-space:pre}
+.flap-half.top .flap-glyph{top:0}
+.flap-half.bottom .flap-glyph{bottom:0}
+.flap-letter::after{content:"";position:absolute;z-index:7;left:3px;right:3px;top:calc(50% - .5px);height:1px;background:rgba(19,35,53,.035);pointer-events:none}
+.flap-letter .flap-top-turn,.flap-letter .flap-bottom-turn{opacity:0;z-index:6;transform-style:preserve-3d}
+.flap-letter .flap-top-turn{transform-origin:bottom center}
+.flap-letter .flap-bottom-turn{transform-origin:top center;transform:rotateX(90deg)}
+.flap-letter.flipping .flap-top-turn{opacity:1;animation:dcw-topflip 128ms cubic-bezier(.44,.04,.64,.94) forwards}
+.flap-letter.flipping .flap-bottom-turn{opacity:1;animation:dcw-bottomflip 195ms cubic-bezier(.17,.78,.18,1) 128ms forwards}
+@keyframes dcw-topflip{from{transform:rotateX(0)}to{transform:rotateX(-90deg)}}
+@keyframes dcw-bottomflip{0%{transform:rotateX(90deg)}72%{transform:rotateX(-5deg)}100%{transform:rotateX(0)}}
+@media(max-width:1160px){.departure-board{--tile-w:clamp(26px,2.8vw,35px);--tile-h:48px;--tile-gap:3px}.flap-letter{font-size:24px}.hero h1.flip-heading{font-size:clamp(38px,4vw,56px)}}
+@media(max-width:780px){.hero h1.flip-heading{font-size:clamp(39px,7.2vw,56px);letter-spacing:-2px;max-width:610px}.flip-heading-outro{margin-top:18px}.flip-board-holder{margin-top:22px}.departure-board{--tile-w:clamp(25px,4.6vw,37px);--tile-h:49px;--tile-gap:3px}.flap-letter{font-size:25px}.city-comma{right:-18px;bottom:1px}}
+@media(max-width:480px){.hero h1.flip-heading{font-size:clamp(34px,9.1vw,44px);line-height:1.12;letter-spacing:-1.7px;margin:19px 0 21px}.flip-board-holder{margin:22px 4px 4px 0}.departure-board{--tile-w:clamp(21px,6.15vw,28px);--tile-h:42px;--tile-gap:2px}.flap-letter{font-size:20px}.flip-heading-outro{margin-top:16px}.city-comma{font-size:40px;right:-12px;bottom:4px}}
+@media(max-width:355px){.departure-board{--tile-w:20px;--tile-h:38px;--tile-gap:2px}.flap-letter{font-size:18px}.hero h1.flip-heading{font-size:34px}}
+@media(prefers-reduced-motion:reduce){.flap-letter.flipping .flap-top-turn,.flap-letter.flipping .flap-bottom-turn{animation:none;display:none}.departure-board{transform:none}}
+
+  </style>
+</head>
+<body>
+  <div class="confetti c-red" aria-hidden="true"></div><div class="confetti c-yellow" aria-hidden="true"></div>
+  <div class="confetti c-blue" aria-hidden="true"></div><div class="confetti c-green" aria-hidden="true"></div>
+  <header class="site-header wrap">
+    <a class="logo" href="#top" aria-label="SkyRibbon home"><span class="logo-art" aria-hidden="true"><svg viewBox="0 0 45 45" fill="none"><path d="M8 28a10 10 0 0 1 9-9.9A12.8 12.8 0 0 1 41 23a9.1 9.1 0 0 1-3.9 17H14a10.6 10.6 0 0 1-6-12Z" fill="#fff"/><path d="M15 12a9.5 9.5 0 0 1 18.3-3.6" stroke="#FBBC05" stroke-width="4.6" stroke-linecap="round"/><path d="M7 25c.6-5.5 4.8-9.5 10.4-9.5a12 12 0 0 1 22.9 6.5A9 9 0 0 1 37 39H14a10 10 0 0 1-7-14Z" stroke="#4285F4" stroke-width="3" stroke-linejoin="round"/></svg></span><span>SkyRibbon<span class="logodot">.</span></span></a>
+    <nav aria-label="Main navigation"><a href="#install">How it works</a><a class="coffee-link" href="https://buymeacoffee.com/jackanooga" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">☕</span> Buy me a coffee <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <h1 class="flip-heading">
+          <span class="flip-heading-intro">Weather from</span>
+          <span class="flip-board-holder">
+            <span class="departure-board" id="departure-board" role="img" aria-label="Boston" aria-roledescription="rotating city display">
+              <span class="departure-letters" id="departure-letters" aria-hidden="true"></span>
+            </span>
+            <span class="city-comma" aria-hidden="true">,</span>
+          </span>
+          <span class="flip-heading-outro">right on your <span class="calendar-accent">Google Cal<span class="period">.</span></span></span>
+        </h1>
+        <p class="lead">A free Google Calendar weather extension for Chrome. Your daily forecast above your schedule, without extra events.</p>
+        <a class="download" href="SkyRibbon_Extension.zip" download="SkyRibbon_Extension.zip"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg> Download for Chrome <span aria-hidden="true">↗</span></a>
+        <div class="under-download"><span class="feature-chip"><span class="green-tick" aria-hidden="true">✓</span> Free forever</span><span class="feature-chip"><span class="green-tick" aria-hidden="true">✓</span> Any city</span><span class="feature-chip"><span class="green-tick" aria-hidden="true">✓</span> °F or °C</span></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of SkyRibbon's forecast displayed above calendar days">
+        <span class="spark spark-yellow" aria-hidden="true">✳</span><span class="spark spark-red" aria-hidden="true">●</span>
+        <div class="calendar-frame">
+          <div class="mock-top"><div class="mock-dots" aria-hidden="true"><i></i><i></i><i></i></div><span><span class="mini-calendar">▦</span> My calendar</span><span class="mock-menu" aria-hidden="true">•••</span></div>
+          <div class="mock-content"><div class="mock-weather">
+            <div class="forecast-pill">☀️ <span>45°/70°</span></div><div class="forecast-pill">🌤️ <span>48°/72°</span></div><div class="forecast-pill">☁️ <span>46°/65°</span></div><div class="forecast-pill">🌦️ <span>43°/61°</span></div><div class="forecast-pill">☀️ <span>52°/73°</span></div>
+          </div><div class="mock-days"><div><span>MON</span><strong>26</strong></div><div><span>TUE</span><strong>27</strong></div><div><span>WED</span><strong>28</strong></div><div><span>THU</span><strong>29</strong></div><div><span>FRI</span><strong>30</strong></div></div>
+          <div class="events-grid" aria-hidden="true"><div class="event-col"><span class="event yellow">Weekly planning</span></div><div class="event-col"><span class="event blue">Team check-in</span></div><div class="event-col"><span class="event green">Lunch with friends</span></div><div class="event-col"></div><div class="event-col"><span class="event red">Friday!</span></div></div>
+          </div>
+        </div>
+        <div class="mini-sticker"><span>✨</span> Forecast first.<br>Plans second.</div>
+      </div>
+    </section>
+    <section id="install" class="install wrap" aria-labelledby="install-title">
+      <div class="install-heading"><span class="eyebrow">GET STARTED</span><h2 id="install-title">Three steps. <span>That's it.</span></h2></div>
+      <div class="step-grid">
+        <div class="step"><span class="step-num blue">01</span><h3>Download & unzip</h3><p>Grab SkyRibbon above and extract the ZIP file.</p></div>
+        <div class="step"><span class="step-num yellow">02</span><h3>Add to Chrome</h3><p>Open <code>chrome://extensions</code>, enable <strong>Developer mode</strong>, then <strong>Load unpacked</strong>. Select the SkyRibbon folder.</p></div>
+        <div class="step"><span class="step-num green">03</span><h3>Pick your city</h3><p>Pin SkyRibbon to your toolbar, click it, and search for your city. Your calendar updates automatically.</p></div>
+      </div>
+    </section>
+    <section class="closing wrap"><div><span aria-hidden="true">🌤️</span><strong>Bright forecasts. Better plans.</strong></div><a href="SkyRibbon_Extension.zip" download="SkyRibbon_Extension.zip">Get SkyRibbon <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="wrap"><span>Made with ☀️ by SkyRibbon · Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></span><span><a href="privacy.html">Privacy</a> <span class="foot-sep">·</span> <a href="https://buymeacoffee.com/jackanooga" target="_blank" rel="noopener noreferrer">☕ Support the project</a></span></footer>
+
+<script>
+(() => {
+  'use strict';
+  const board = document.getElementById('departure-board');
+  const holder = document.getElementById('departure-letters');
+  if (!board || !holder) return;
+
+  const cityNames = [
+    'AMSTERDAM','ATHENS','ATLANTA','AUCKLAND','BANGKOK','BARCELONA','BEIJING','BERLIN','BOGOTA','BOSTON',
+    'BRUSSELS','BUDAPEST','BUENOS AIR','CAIRO','CAPE TOWN','CASABLANCA','CHICAGO','COPENHAGEN','DALLAS','DELHI',
+    'DENVER','DETROIT','DOHA','DUBAI','DUBLIN','EDINBURGH','GENEVA','HAMBURG','HANOI','HAVANA',
+    'HELSINKI','HONG KONG','HONOLULU','HOUSTON','ISTANBUL','JAKARTA','JOHANNESBG','KYOTO','LAGOS','LIMA',
+    'LISBON','LONDON','LOS ANGELE','MADRID','MANILA','MARRAKESH','MELBOURNE','MEXICO CTY','MIAMI','MILAN',
+    'MONTREAL','MUMBAI','MUNICH','NAIROBI','NAPLES','NEW YORK','OSAKA','OSLO','PARIS','PHILADELPH',
+    'PHOENIX','PRAGUE','QUEBEC CITY','REYKJAVIK','RIO','ROME','SAN DIEGO','SAN JUAN','SAN JOSE','SANTIAGO',
+    'SAO PAULO','SEATTLE','SEOUL','SHANGHAI','SINGAPORE','STOCKHOLM','SYDNEY','TAIPEI','TEL AVIV','TOKYO',
+    'TORONTO','VALENCIA','VANCOUVER','VENICE','VIENNA','WARSAW','WASHINGTON','ZURICH'
+  ];
+  const slots = 11;
+  const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const TOP_MS = 120;
+  const BOTTOM_MS = 210;
+  const STAGGER_MS = 17;
+  const PAUSE_MS = 2250;
+  let current = 'BOSTON';
+  let nextTimer = null;
+  let animating = false;
+  let cityDeck = [];
+  const entries = [];
+
+  const fill = (text) => {
+    const leading = Math.floor((slots - text.length) / 2);
+    return ' '.repeat(Math.max(0, leading)) + text + ' '.repeat(Math.max(0, slots - text.length - leading));
+  };
+
+  const half = (part, cls, letter) => {
+    const el = document.createElement('span');
+    el.className = `flap-half ${part} ${cls}`;
+    const glyph = document.createElement('span');
+    glyph.className = 'flap-glyph';
+    glyph.textContent = letter === ' ' ? ' ' : letter;
+    el.append(glyph);
+    return { el, glyph };
+  };
+
+  for (let i = 0; i < slots; i++) {
+    const tile = document.createElement('span');
+    tile.className = 'flap-letter';
+    const t = half('top', 'flap-static-top', ' ');
+    const b = half('bottom', 'flap-static-bottom', ' ');
+    const ft = half('top', 'flap-top-turn', ' ');
+    const fb = half('bottom', 'flap-bottom-turn', ' ');
+    tile.append(t.el, b.el, ft.el, fb.el);
+    holder.append(tile);
+    entries.push({ tile, t: t.glyph, b: b.glyph, ft: ft.glyph, fb: fb.glyph, swapTimer: null, doneTimer: null, startTimer: null });
+  }
+
+  const glyph = (node, value) => { node.textContent = value === ' ' ? ' ' : value; };
+
+  function installStatic(name) {
+    const padded = fill(name);
+    entries.forEach((e, i) => {
+      e.tile.classList.remove('flipping');
+      glyph(e.t, padded[i]);
+      glyph(e.b, padded[i]);
+      glyph(e.ft, padded[i]);
+      glyph(e.fb, padded[i]);
+      clearTimeout(e.swapTimer);
+      clearTimeout(e.doneTimer);
+      clearTimeout(e.startTimer);
+    });
+    board.setAttribute('aria-label', name);
+  }
+
+  function reshuffleDeck() {
+    cityDeck = cityNames.filter(name => name !== current);
+    for (let i = cityDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cityDeck[i], cityDeck[j]] = [cityDeck[j], cityDeck[i]];
+    }
+  }
+
+  function nextCity() {
+    if (!cityDeck.length) {
+      reshuffleDeck();
+      if (cityDeck[0] === current && cityDeck.length > 1) {
+        cityDeck.push(cityDeck.shift());
+      }
+    }
+    return cityDeck.shift();
+  }
+
+  installStatic(current);
+  reshuffleDeck();
+
+  function setCity(name) {
+    if (animating || document.hidden || motionReduced.matches || !name || name === current) return;
+    animating = true;
+    const prev = fill(current);
+    const dest = fill(name);
+    let maxDelay = 0;
+
+    entries.forEach((e, i) => {
+      if (prev[i] === dest[i]) return;
+      const delay = i * STAGGER_MS;
+      maxDelay = Math.max(maxDelay, delay);
+
+      glyph(e.t, prev[i]);
+      glyph(e.b, prev[i]);
+      glyph(e.ft, prev[i]);
+      glyph(e.fb, dest[i]);
+
+      e.startTimer = setTimeout(() => {
+        e.tile.classList.add('flipping');
+      }, delay);
+
+      e.swapTimer = setTimeout(() => {
+        glyph(e.t, dest[i]);
+      }, delay + TOP_MS);
+
+      e.doneTimer = setTimeout(() => {
+        glyph(e.b, dest[i]);
+        e.tile.classList.remove('flipping');
+        glyph(e.ft, dest[i]);
+        glyph(e.fb, dest[i]);
+      }, delay + TOP_MS + BOTTOM_MS + 10);
+    });
+
+    window.setTimeout(() => {
+      current = name;
+      installStatic(name);
+      animating = false;
+      schedule();
+    }, maxDelay + TOP_MS + BOTTOM_MS + 40);
+  }
+
+  function schedule() {
+    clearTimeout(nextTimer);
+    if (document.hidden || motionReduced.matches) return;
+    nextTimer = setTimeout(() => {
+      setCity(nextCity());
+    }, PAUSE_MS);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      if (animating) return;
+      schedule();
+    } else {
+      clearTimeout(nextTimer);
+    }
+  });
+
+  motionReduced.addEventListener?.('change', () => {
+    if (motionReduced.matches) {
+      clearTimeout(nextTimer);
+      installStatic(current);
+    } else {
+      reshuffleDeck();
+      schedule();
+    }
+  });
+
+  schedule();
+})();
+</script>
+</body>
+</html>
