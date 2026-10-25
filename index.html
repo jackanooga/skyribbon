@@ -86,6 +86,23 @@
 .brand-wordmark{font-family:"Manrope", "Inter", system-ui, sans-serif;font-size:25px;font-weight:700;letter-spacing:-.95px;line-height:1;color:#17233c;font-synthesis:none}
 @media(max-width:480px){.logo-symbol{width:46px;height:37px}.brand-wordmark{font-size:21px;letter-spacing:-.7px}.logo{gap:7px}}
 
+
+/* v2.2 interactive weather demo: matches the extension tooltip, without disturbing the mock calendar. */
+.mock-weather .forecast-pill{font-family:inherit;line-height:1.35;cursor:help;border:0;min-width:0;display:block;width:100%;appearance:none;-webkit-appearance:none;text-align:center;touch-action:manipulation;transition:filter .15s ease,transform .15s ease}
+.mock-weather .forecast-pill:hover{filter:brightness(1.04);transform:translateY(-1px)}
+.mock-weather .forecast-pill:focus-visible{outline:2px solid #4285f4;outline-offset:3px}
+.mock-forecast-hint{position:absolute;z-index:3;bottom:-5px;left:50%;transform:translateX(-50%);white-space:nowrap;margin:0;color:#64758d;font-size:11px;font-weight:700;letter-spacing:.03px;text-align:center}
+.mock-forecast-hint .hint-pointer{color:#4285f4;margin-right:5px;font-size:14px}
+.mock-forecast-hint .hint-sample{font-weight:500;color:#91a0b3;margin-left:3px}
+.mock-forecast-hint .hint-touch{display:none}
+.mock-weather-tooltip{position:fixed;z-index:10000;pointer-events:none;box-sizing:border-box;min-width:220px;max-width:min(288px,calc(100vw - 16px));padding:13px 15px;background:#24334b;color:#fff;border:1px solid #43536d;border-radius:13px;box-shadow:0 8px 22px rgba(0,0,0,.26);font:500 12px/1.4 Roboto,Arial,sans-serif;letter-spacing:0;text-align:left}
+.mock-weather-tooltip[hidden]{display:none!important}
+.mock-weather-tooltip .tip-day{color:#b9c7da;font-size:11px;margin-bottom:6px}
+.mock-weather-tooltip .tip-condition{color:#fff;font-size:14px;font-weight:700;margin-bottom:11px}
+.mock-weather-tooltip .tip-metrics{border-top:1px solid #485970;padding-top:9px;display:flex;gap:6px;flex-direction:column;color:#e8edf5}
+@media(max-width:780px){.mock-forecast-hint{bottom:-24px;font-size:10px}.mock-forecast-hint .hint-desktop{display:none}.mock-forecast-hint .hint-touch{display:inline}}
+@media(hover:none){.mock-forecast-hint .hint-desktop{display:none}.mock-forecast-hint .hint-touch{display:inline}}
+@media(prefers-reduced-motion:reduce){.mock-weather .forecast-pill{transition:none}.mock-weather .forecast-pill:hover{transform:none}}
   </style>
 </head>
 <body>
@@ -117,11 +134,12 @@
         <div class="calendar-frame">
           <div class="mock-top"><div class="mock-dots" aria-hidden="true"><i></i><i></i><i></i></div><span><span class="mini-calendar">▦</span> My calendar</span><span class="mock-menu" aria-hidden="true">•••</span></div>
           <div class="mock-content"><div class="mock-weather">
-            <div class="forecast-pill forecast-sunny">☀️ <span>45°/70°</span></div><div class="forecast-pill forecast-storm">⛈️ <span>58°/75°</span></div><div class="forecast-pill forecast-rain">🌦️ <span>43°/61°</span></div><div class="forecast-pill forecast-cloudy">☁️ <span>46°/65°</span></div><div class="forecast-pill forecast-partly">🌤️ <span>52°/73°</span></div>
+            <button type="button" class="forecast-pill forecast-sunny" data-day="Monday, October 26" data-condition="Sunny" data-emoji="☀️" data-low="45" data-high="70" data-rain="5" data-wind="8" aria-label="Monday, October 26: Sunny, low 45 degrees and high 70 degrees. Show weather details.">☀️ <span>45°/70°</span></button><button type="button" class="forecast-pill forecast-storm" data-day="Tuesday, October 27" data-condition="Thunderstorms" data-emoji="⛈️" data-low="58" data-high="75" data-rain="80" data-wind="17" aria-label="Tuesday, October 27: Thunderstorms, low 58 degrees and high 75 degrees. Show weather details.">⛈️ <span>58°/75°</span></button><button type="button" class="forecast-pill forecast-rain" data-day="Wednesday, October 28" data-condition="Rain showers" data-emoji="🌦️" data-low="43" data-high="61" data-rain="75" data-wind="12" aria-label="Wednesday, October 28: Rain showers, low 43 degrees and high 61 degrees. Show weather details.">🌦️ <span>43°/61°</span></button><button type="button" class="forecast-pill forecast-cloudy" data-day="Thursday, October 29" data-condition="Cloudy" data-emoji="☁️" data-low="46" data-high="65" data-rain="15" data-wind="9" aria-label="Thursday, October 29: Cloudy, low 46 degrees and high 65 degrees. Show weather details.">☁️ <span>46°/65°</span></button><button type="button" class="forecast-pill forecast-partly" data-day="Friday, October 30" data-condition="Partly cloudy" data-emoji="🌤️" data-low="52" data-high="73" data-rain="20" data-wind="7" aria-label="Friday, October 30: Partly cloudy, low 52 degrees and high 73 degrees. Show weather details.">🌤️ <span>52°/73°</span></button>
           </div><div class="mock-days"><div><span>MON</span><strong>26</strong></div><div><span>TUE</span><strong>27</strong></div><div><span>WED</span><strong>28</strong></div><div><span>THU</span><strong>29</strong></div><div><span>FRI</span><strong>30</strong></div></div>
           <div class="events-grid" aria-hidden="true"><div class="event-col"><span class="event yellow">Weekly planning</span><span class="event green">Pilates 6pm</span></div><div class="event-col"><span class="event blue">Team check-in</span></div><div class="event-col"><span class="event green">Lunch with friends</span></div><div class="event-col"></div><div class="event-col"><span class="event yellow">Friday sync</span><span class="event red">Happy hour</span></div></div>
           </div>
         </div>
+        <p class="mock-forecast-hint"><span class="hint-pointer">↖</span><span class="hint-desktop">Hover over a forecast for details</span><span class="hint-touch">Tap a forecast for details</span><span class="hint-sample">· Sample weather</span></p>
         <div class="mini-sticker"><span>✨</span> Forecast first.<br>Plans second.</div>
       </div>
     </section>
@@ -137,6 +155,11 @@
   </main>
   <footer class="wrap"><span>Made with ☀️ by SkyRibbon · Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></span><span><a href="privacy.html">Privacy</a> <span class="foot-sep">·</span> <a href="https://buymeacoffee.com/jackanooga" target="_blank" rel="noopener noreferrer">☕ Support the project</a></span></footer>
 
+<div id="mock-weather-tooltip" class="mock-weather-tooltip" role="tooltip" hidden>
+  <div class="tip-day" id="mock-tip-day"></div>
+  <div class="tip-condition" id="mock-tip-condition"></div>
+  <div class="tip-metrics"><span id="mock-tip-rain"></span><span id="mock-tip-wind"></span></div>
+</div>
 <script>
 (() => {
   'use strict';
@@ -305,6 +328,97 @@
   });
 
   schedule();
+})();
+</script>
+
+<script>
+/* Self-contained, illustrative forecast preview. No API calls or location permissions. */
+(() => {
+  'use strict';
+  const tooltip = document.getElementById('mock-weather-tooltip');
+  const pills = [...document.querySelectorAll('.mock-weather .forecast-pill')];
+  if (!tooltip || !pills.length) return;
+  const day = document.getElementById('mock-tip-day');
+  const condition = document.getElementById('mock-tip-condition');
+  const rain = document.getElementById('mock-tip-rain');
+  const wind = document.getElementById('mock-tip-wind');
+  let active = null;
+  let touchPinned = false;
+  let lastPointerType = '';
+
+  function closeDetails() {
+    if (active) active.removeAttribute('aria-describedby');
+    active = null;
+    touchPinned = false;
+    tooltip.hidden = true;
+  }
+
+  function positionDetails() {
+    if (!active || tooltip.hidden) return;
+    const anchor = active.getBoundingClientRect();
+    if (anchor.bottom < 0 || anchor.top > window.innerHeight) {
+      closeDetails();
+      return;
+    }
+    tooltip.style.visibility = 'hidden';
+    const bounds = tooltip.getBoundingClientRect();
+    const margin = 8;
+    const gap = 9;
+    const x = Math.max(margin, Math.min(anchor.left + anchor.width / 2 - bounds.width / 2, window.innerWidth - bounds.width - margin));
+    const y = anchor.bottom + bounds.height + gap + margin <= window.innerHeight
+      ? anchor.bottom + gap
+      : Math.max(margin, anchor.top - bounds.height - gap);
+    tooltip.style.left = `${Math.round(x)}px`;
+    tooltip.style.top = `${Math.round(y)}px`;
+    tooltip.style.visibility = 'visible';
+  }
+
+  function openDetails(pill, pin = false) {
+    if (active && active !== pill) active.removeAttribute('aria-describedby');
+    active = pill;
+    touchPinned = pin;
+    pill.setAttribute('aria-describedby', 'mock-weather-tooltip');
+    const data = pill.dataset;
+    day.textContent = `${data.day} · Sample forecast`;
+    condition.textContent = `${data.emoji}  ${data.condition} · ${data.low}° / ${data.high}°`;
+    rain.textContent = `💧 Rain chance  ${data.rain}%`;
+    wind.textContent = `≈ Peak wind  ${data.wind} mph`;
+    tooltip.hidden = false;
+    positionDetails();
+  }
+
+  for (const pill of pills) {
+    pill.addEventListener('pointerenter', event => {
+      if ((event.pointerType === 'mouse' || event.pointerType === 'pen') && !touchPinned) openDetails(pill);
+    });
+    pill.addEventListener('pointerleave', event => {
+      if ((event.pointerType === 'mouse' || event.pointerType === 'pen') && !touchPinned) closeDetails();
+    });
+    pill.addEventListener('focus', () => {
+      if (!touchPinned) openDetails(pill);
+    });
+    pill.addEventListener('blur', () => {
+      if (!touchPinned) closeDetails();
+    });
+    pill.addEventListener('click', event => {
+      const isTouch = lastPointerType === 'touch' || (event.detail !== 0 && window.matchMedia('(hover: none)').matches);
+      if (isTouch) {
+        if (touchPinned && active === pill) closeDetails();
+        else openDetails(pill, true);
+      } else {
+        openDetails(pill);
+      }
+    });
+  }
+  document.addEventListener('pointerdown', event => {
+    lastPointerType = event.pointerType;
+    if (!event.target.closest('.mock-weather .forecast-pill') && touchPinned) closeDetails();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeDetails();
+  });
+  window.addEventListener('resize', positionDetails);
+  window.addEventListener('scroll', positionDetails, { passive: true });
 })();
 </script>
 </body>
