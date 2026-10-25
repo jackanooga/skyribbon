@@ -3,12 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#faf9f6">
   <meta name="description" content="SkyRibbon is a free Google Calendar weather extension for Chrome. See daily forecasts for any city above your calendar without adding events.">
   <meta property="og:title" content="SkyRibbon — Free Google Calendar Weather Extension">
   <meta property="og:description" content="Daily weather above your Google Calendar. Free for Chrome, with any city and °F or °C. No extra calendar events.">
   <title>SkyRibbon — Free Google Calendar Weather Extension for Chrome</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <meta property="og:image" content="https://skyribbon.xyz/skyribbon-social-card.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="canonical" href="https://skyribbon.xyz/">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
@@ -73,13 +80,19 @@
 @media(max-width:355px){.departure-board{--tile-w:20px;--tile-h:38px;--tile-gap:2px}.flap-letter{font-size:18px}.hero h1.flip-heading{font-size:34px}}
 @media(prefers-reduced-motion:reduce){.flap-letter.flipping .flap-top-turn,.flap-letter.flipping .flap-bottom-turn{animation:none;display:none}.departure-board{transform:none}}
 
+/* SkyRibbon brand identity — original approved mark and consistently typeset wordmark. */
+.logo{gap:10px;letter-spacing:normal;text-decoration:none;white-space:nowrap;align-items:center}
+.logo-symbol{display:block;width:58px;height:45px;object-fit:contain;flex-shrink:0}
+.brand-wordmark{font-family:"Manrope", "Inter", system-ui, sans-serif;font-size:25px;font-weight:700;letter-spacing:-.95px;line-height:1;color:#17233c;font-synthesis:none}
+@media(max-width:480px){.logo-symbol{width:46px;height:37px}.brand-wordmark{font-size:21px;letter-spacing:-.7px}.logo{gap:7px}}
+
   </style>
 </head>
 <body>
   <div class="confetti c-red" aria-hidden="true"></div><div class="confetti c-yellow" aria-hidden="true"></div>
   <div class="confetti c-blue" aria-hidden="true"></div><div class="confetti c-green" aria-hidden="true"></div>
   <header class="site-header wrap">
-    <a class="logo" href="#top" aria-label="SkyRibbon home"><span class="logo-art" aria-hidden="true"><svg viewBox="0 0 45 45" fill="none"><path d="M8 28a10 10 0 0 1 9-9.9A12.8 12.8 0 0 1 41 23a9.1 9.1 0 0 1-3.9 17H14a10.6 10.6 0 0 1-6-12Z" fill="#fff"/><path d="M15 12a9.5 9.5 0 0 1 18.3-3.6" stroke="#FBBC05" stroke-width="4.6" stroke-linecap="round"/><path d="M7 25c.6-5.5 4.8-9.5 10.4-9.5a12 12 0 0 1 22.9 6.5A9 9 0 0 1 37 39H14a10 10 0 0 1-7-14Z" stroke="#4285F4" stroke-width="3" stroke-linejoin="round"/></svg></span><span>SkyRibbon<span class="logodot">.</span></span></a>
+    <a class="logo" href="#top" aria-label="SkyRibbon home"><img class="logo-symbol" src="skyribbon-symbol.png" alt="" width="60" height="45"><span class="brand-wordmark">SkyRibbon</span></a>
     <nav aria-label="Main navigation"><a href="#install">How it works</a><a class="coffee-link" href="https://buymeacoffee.com/jackanooga" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">☕</span> Buy me a coffee <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main id="top">
