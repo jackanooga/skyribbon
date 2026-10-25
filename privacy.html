@@ -1,1 +1,42 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy · SkyRibbon</title><link rel="stylesheet" href="styles.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"><style>.privacy{max-width:760px;margin:65px auto 100px;line-height:1.75;color:#536a85}.privacy h1{font-size:42px;color:#183153;margin-bottom:16px}.privacy h2{font-size:21px;color:#183153;margin-top:32px}.privacy p{font-size:15px}.privacy a{color:#4285f4;text-decoration:underline}</style></head><body><header class="site-header wrap"><a class="logo" href="index.html"><span class="logo-art" aria-hidden="true">⛅</span><span>SkyRibbon<span class="logodot">.</span></span></a><nav><a href="index.html">← Back to SkyRibbon</a></nav></header><main class="privacy wrap"><h1>Privacy, the short version.</h1><p>SkyRibbon doesn’t require an account. It doesn’t connect to your Google account or send your calendar events anywhere.</p><h2>What the extension accesses</h2><p>SkyRibbon runs on Google Calendar pages to display forecast badges alongside the calendar interface. It does not need permission to access your Google Calendar account or read the contents of your calendar through a Google API.</p><h2>What stays on your device</h2><p>Your selected city, temperature units, visibility preference, and temporarily cached forecasts are saved using Chrome’s local extension storage. They are not sent to SkyRibbon servers.</p><h2>Where weather requests go</h2><p>The extension requests city search results and weather forecasts from <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>. Those requests necessarily include a city search phrase or selected location coordinates, along with network metadata such as your IP address, according to Open-Meteo’s own privacy practices.</p><h2>Support link</h2><p>The optional Buy Me a Coffee link takes you to an external website; any payments are handled there, not by SkyRibbon.</p><p><a href="index.html">← Return home</a></p></main><footer class="wrap">SkyRibbon · Weather above your calendar</footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#faf9f6">
+  <title>Privacy · SkyRibbon</title>
+  <meta name="description" content="How SkyRibbon handles location, weather forecasts and calendar data.">
+  <link rel="icon" href="favicon.ico?v=20261025c" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261025c">
+  <style>
+    :root{font:16px/1.65 Arial,Helvetica,sans-serif;color:#183153;background:#faf9f6}
+    *{box-sizing:border-box}body{margin:0}a{color:#2f70d8}header,main,footer{width:min(790px,calc(100% - 40px));margin-inline:auto}
+    header{display:flex;align-items:center;justify-content:space-between;padding:26px 0;border-bottom:1px solid #e4e9f0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#183153;font-size:22px;font-weight:800;letter-spacing:-.6px}
+    .brand img{width:48px;height:38px;object-fit:contain}main{padding:42px 0 60px}
+    h1{font-size:clamp(32px,5vw,43px);letter-spacing:-1.5px;margin:0 0 12px;line-height:1.2}
+    h2{font-size:19px;margin:32px 0 8px}p,li{color:#516780;font-size:14px;line-height:1.75}ul{padding-left:22px}
+    .intro{font-size:16px}footer{border-top:1px solid #e4e9f0;padding:22px 0 38px;color:#8594a6;font-size:12px}
+  </style>
+</head>
+<body>
+  <header><a class="brand" href="/"><img src="skyribbon-symbol.png" width="48" height="38" alt="">SkyRibbon</a><a href="/">← Back to SkyRibbon</a></header>
+  <main>
+    <h1>Privacy, the short version.</h1>
+    <p class="intro">SkyRibbon is a free browser extension. It does not require an account, read your Google Calendar events through an API, or send your calendar contents to SkyRibbon.</p>
+    <h2>Google Calendar access</h2>
+    <p>SkyRibbon runs on Google Calendar pages to add a daily weather ribbon to the interface. It does not need your Google account credentials or Google Calendar API authorization. It adjusts page elements to display forecasts.</p>
+    <h2>Manual city selection</h2>
+    <p>If you search for a city, the search phrase goes to <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>'s geocoding service. The coordinates of your chosen city go to Open-Meteo's forecast service. Your chosen city, temperature units, badge colors, and temporarily cached forecasts are saved locally by your browser extension.</p>
+    <h2>Optional location detection</h2>
+    <p>SkyRibbon requests access to browser geolocation through its extension permissions, but it <strong>only reads your location when you click “Use my location”</strong> in the popup. It does not continuously track you or check your location in the background.</p>
+    <p>When you use this feature, the live coordinates obtained from your device are sent directly to <a href="https://www.bigdatacloud.com/" target="_blank" rel="noopener noreferrer">BigDataCloud</a> to identify your nearby city and to Open-Meteo to obtain the forecast. BigDataCloud's free client-side service uses coordinate and network signals to help improve its location data; review its <a href="https://www.bigdatacloud.com/privacy-and-cookie-policy" target="_blank" rel="noopener noreferrer">privacy policy</a> before enabling the feature. If the city-name lookup fails, SkyRibbon still uses the coordinates for weather and labels the location “Current location.”</p>
+    <h2>Weather details and preferences</h2>
+    <p>Hover and keyboard-focus weather details—including precipitation chance and peak wind—use the same forecast returned by Open-Meteo. No additional request is sent when you hover over a badge. Preferences remain in Chrome's local extension storage, and no SkyRibbon account is required.</p>
+    <h2>Support link</h2>
+    <p>The optional Buy Me a Coffee link opens a third-party website. Any donations are processed by that site, not SkyRibbon.</p>
+    <p><a href="/">← Return home</a></p>
+  </main>
+  <footer>SkyRibbon · Weather above your calendar</footer>
+</body>
+</html>
