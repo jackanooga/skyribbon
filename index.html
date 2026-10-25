@@ -7,10 +7,10 @@
   <meta property="og:title" content="SkyRibbon — Free Google Calendar Weather Extension">
   <meta property="og:description" content="Daily weather above your Google Calendar. Free for Chrome, with any city and °F or °C. No extra calendar events.">
   <title>SkyRibbon — Free Google Calendar Weather Extension for Chrome</title>
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" href="favicon.ico?v=20261025c" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20261025c">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261025c">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20261025c">
   <meta name="theme-color" content="#faf9f6">
   <meta property="og:image" content="https://skyribbon.xyz/skyribbon-social-card.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,12 +146,12 @@
 
   const cityNames = [
     'AMSTERDAM','ATHENS','ATLANTA','AUCKLAND','BANGKOK','BARCELONA','BEIJING','BERLIN','BOGOTA','BOSTON',
-    'BRUSSELS','BUDAPEST','BUENOS AIR','CAIRO','CAPE TOWN','CASABLANCA','CHICAGO','COPENHAGEN','DALLAS','DELHI',
+    'BRUSSELS','BUDAPEST','BRASILIA','CAIRO','CAPE TOWN','CASABLANCA','CHICAGO','COPENHAGEN','DALLAS','DELHI',
     'DENVER','DETROIT','DOHA','DUBAI','DUBLIN','EDINBURGH','GENEVA','HAMBURG','HANOI','HAVANA',
-    'HELSINKI','HONG KONG','HONOLULU','HOUSTON','ISTANBUL','JAKARTA','JOHANNESBG','KYOTO','LAGOS','LIMA',
-    'LISBON','LONDON','LOS ANGELE','MADRID','MANILA','MARRAKESH','MELBOURNE','MEXICO CTY','MIAMI','MILAN',
-    'MONTREAL','MUMBAI','MUNICH','NAIROBI','NAPLES','NEW YORK','OSAKA','OSLO','PARIS','PHILADELPH',
-    'PHOENIX','PRAGUE','QUEBEC CITY','REYKJAVIK','RIO','ROME','SAN DIEGO','SAN JUAN','SAN JOSE','SANTIAGO',
+    'HELSINKI','HONG KONG','HONOLULU','HOUSTON','ISTANBUL','JAKARTA','PRETORIA','KYOTO','LAGOS','LIMA',
+    'LISBON','LONDON','LOS ANGELES','MADRID','MANILA','MARRAKECH','MELBOURNE','MEXICO CITY','MIAMI','MILAN',
+    'MONTREAL','MUMBAI','MUNICH','NAIROBI','NAPLES','NEW YORK','OSAKA','OSLO','PARIS','PITTSBURGH',
+    'PHOENIX','PRAGUE','QUEBEC CITY','REYKJAVIK','SALVADOR','ROME','SAN DIEGO','SAN JUAN','SAN JOSE','SANTIAGO',
     'SAO PAULO','SEATTLE','SEOUL','SHANGHAI','SINGAPORE','STOCKHOLM','SYDNEY','TAIPEI','TEL AVIV','TOKYO',
     'TORONTO','VALENCIA','VANCOUVER','VENICE','VIENNA','WARSAW','WASHINGTON','ZURICH'
   ];
@@ -165,6 +165,7 @@
   let nextTimer = null;
   let animating = false;
   let cityDeck = [];
+  let firstDeck = true;
   const entries = [];
 
   const fill = (text) => {
@@ -212,20 +213,23 @@
   }
 
   function reshuffleDeck() {
-    cityDeck = cityNames.filter(name => name !== current);
+    // The initially displayed city counts toward the first complete rotation.
+    // Every subsequent deck contains all cities exactly once.
+    cityDeck = firstDeck ? cityNames.filter(name => name !== current) : [...cityNames];
+    firstDeck = false;
     for (let i = cityDeck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [cityDeck[i], cityDeck[j]] = [cityDeck[j], cityDeck[i]];
     }
+    // Avoid a repeated city at the boundary between two complete decks.
+    if (cityDeck.length > 1 && cityDeck[0] === current) {
+      const j = 1 + Math.floor(Math.random() * (cityDeck.length - 1));
+      [cityDeck[0], cityDeck[j]] = [cityDeck[j], cityDeck[0]];
+    }
   }
 
   function nextCity() {
-    if (!cityDeck.length) {
-      reshuffleDeck();
-      if (cityDeck[0] === current && cityDeck.length > 1) {
-        cityDeck.push(cityDeck.shift());
-      }
-    }
+    if (!cityDeck.length) reshuffleDeck();
     return cityDeck.shift();
   }
 
