@@ -24,37 +24,34 @@
 @media(max-width:480px){.c-yellow,.c-red{display:none}}
 
   
-/* SkyRibbon departure-board headline — split-flap animation, no libraries. */
-.hero h1.flip-heading{font-size:clamp(38px,4.2vw,60px);line-height:1.07;letter-spacing:-2.8px;margin:16px 0 25px;font-weight:800;max-width:580px}
+/* SkyRibbon departure-board headline — smoother split-flap animation, no libraries. */
+.hero h1.flip-heading{font-size:clamp(38px,4.2vw,60px);line-height:1.07;letter-spacing:-2.8px;margin:16px 0 25px;font-weight:800;max-width:620px}
 .flip-heading-intro,.flip-heading-outro{display:block}
 .flip-heading-outro{margin-top:13px;max-width:570px}
 .calendar-accent{color:#4285f4;white-space:nowrap}
-.flip-board-holder{position:relative;display:inline-block;max-width:100%;margin:21px 0 2px;vertical-align:middle}
+.flip-board-holder{position:relative;display:inline-block;max-width:100%;margin:20px 0 4px;vertical-align:middle}
 .city-comma{position:absolute;right:-22px;bottom:4px;color:#ea4335;font-size:clamp(44px,5vw,70px);line-height:.8}
-.departure-board{--tile-w:35px;--tile-h:52px;--tile-gap:3px;display:inline-flex;flex-direction:column;gap:11px;padding:11px 12px 13px;background:#1b2c42;color:#fff;border:3px solid #283f58;box-shadow:0 6px 0 #0f2032,0 13px 21px #2c42553d;border-radius:12px;white-space:nowrap;transform:rotate(-1.5deg);line-height:1;letter-spacing:0}
-.departure-meta{display:flex;align-items:center;gap:7px;color:#d7e3f0;font-size:9px;font-family:Arial,sans-serif;font-weight:900;letter-spacing:1.65px;white-space:nowrap;padding:1px 2px 0}
-.departure-led{display:inline-block;width:7px;height:7px;flex:none;background:#34a853;border-radius:100%;box-shadow:0 0 0 3px #34a85318,0 0 7px #34a85370}
-.departure-meta-right{margin-left:auto;color:#95a9c2;font-size:8px;letter-spacing:1.2px}
+.departure-board{--tile-w:35px;--tile-h:52px;--tile-gap:4px;display:inline-flex;align-items:center;white-space:nowrap;transform:rotate(-.8deg);line-height:1;letter-spacing:0;padding:0;background:transparent;border:0;box-shadow:none}
 .departure-letters{display:flex;gap:var(--tile-gap);isolation:isolate}
-.flap-letter{width:var(--tile-w);height:var(--tile-h);position:relative;display:inline-block;flex:none;perspective:450px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:27px;font-weight:800;letter-spacing:0;text-shadow:0 1px 0 #0003}
-.flap-half{position:absolute;left:0;width:100%;height:50%;overflow:hidden;background:#33465c;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.flap-half.top{top:0;border-radius:4px 4px 1px 1px;background:#374d66}
-.flap-half.bottom{bottom:0;border-radius:1px 1px 4px 4px;background:#283b51}
+.flap-letter{width:var(--tile-w);height:var(--tile-h);position:relative;display:inline-block;flex:none;perspective:700px;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:27px;font-weight:800;letter-spacing:0;text-shadow:0 1px 0 #0003;filter:drop-shadow(0 6px 10px #23364c18)}
+.flap-half{position:absolute;left:0;width:100%;height:50%;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform}
+.flap-half.top{top:0;border-radius:4px 4px 1px 1px;background:linear-gradient(180deg,#334963 0%,#30465f 100%);border-bottom:1px solid #233349}
+.flap-half.bottom{bottom:0;border-radius:1px 1px 4px 4px;background:linear-gradient(180deg,#2a3d54 0%,#26384d 100%)}
 .flap-glyph{position:absolute;left:0;width:100%;height:200%;display:flex;justify-content:center;align-items:center;line-height:1;white-space:pre}
 .flap-half.top .flap-glyph{top:0}
 .flap-half.bottom .flap-glyph{bottom:0}
-.flap-letter::after{content:"";position:absolute;z-index:7;left:0;right:0;top:calc(50% - 1px);height:2px;background:#102135;box-shadow:0 1px #ffffff0a;pointer-events:none}
-.flap-letter .flap-top-turn,.flap-letter .flap-bottom-turn{display:none;z-index:5;transform-style:preserve-3d}
+.flap-letter::after{content:"";position:absolute;z-index:7;left:0;right:0;top:calc(50% - 1px);height:2px;background:#132335;box-shadow:0 1px #ffffff10;pointer-events:none}
+.flap-letter .flap-top-turn,.flap-letter .flap-bottom-turn{opacity:0;z-index:6;transform-style:preserve-3d}
 .flap-letter .flap-top-turn{transform-origin:bottom center}
 .flap-letter .flap-bottom-turn{transform-origin:top center;transform:rotateX(90deg)}
-.flap-letter.flipping .flap-top-turn{display:block;animation:dcw-topflip 250ms cubic-bezier(.56,.08,.88,.65) forwards}
-.flap-letter.flipping .flap-bottom-turn{display:block;animation:dcw-bottomflip 250ms cubic-bezier(.08,.55,.35,.98) 250ms forwards}
+.flap-letter.flipping .flap-top-turn{opacity:1;animation:dcw-topflip 170ms cubic-bezier(.45,.05,.7,.95) forwards}
+.flap-letter.flipping .flap-bottom-turn{opacity:1;animation:dcw-bottomflip 190ms cubic-bezier(.18,.72,.2,1) 170ms forwards}
 @keyframes dcw-topflip{from{transform:rotateX(0)}to{transform:rotateX(-90deg)}}
 @keyframes dcw-bottomflip{from{transform:rotateX(90deg)}to{transform:rotateX(0)}}
-@media(max-width:1160px){.departure-board{--tile-w:clamp(26px,2.75vw,35px);--tile-h:48px;--tile-gap:2px;padding:9px 10px 12px}.flap-letter{font-size:24px}.hero h1.flip-heading{font-size:clamp(38px,4vw,56px)}}
-@media(max-width:780px){.hero h1.flip-heading{font-size:clamp(39px,7.2vw,56px);letter-spacing:-2px;max-width:610px}.flip-heading-outro{margin-top:18px}.flip-board-holder{margin-top:22px}.departure-board{--tile-w:clamp(25px,4.6vw,37px);--tile-h:49px;--tile-gap:3px;padding:10px 12px 12px}.flap-letter{font-size:25px}.city-comma{right:-18px;bottom:1px}}
-@media(max-width:480px){.hero h1.flip-heading{font-size:clamp(34px,9.1vw,44px);line-height:1.12;letter-spacing:-1.7px;margin:19px 0 21px}.flip-board-holder{margin:22px 4px 4px 0}.departure-board{--tile-w:clamp(21px,6.15vw,28px);--tile-h:42px;--tile-gap:2px;padding:9px 9px 11px;border-width:2px;border-radius:10px;gap:9px;box-shadow:0 4px 0 #0f2032,0 9px 15px #2c425527}.flap-letter{font-size:20px}.departure-meta{font-size:8px;letter-spacing:1px}.departure-meta-right{font-size:7px;letter-spacing:.6px}.flip-heading-outro{margin-top:16px}.city-comma{font-size:40px;right:-12px;bottom:4px}}
-@media(max-width:355px){.departure-board{--tile-w:20px;--tile-h:38px;--tile-gap:2px;padding:8px 7px}.flap-letter{font-size:18px}.hero h1.flip-heading{font-size:34px}.departure-meta-right{display:none}}
+@media(max-width:1160px){.departure-board{--tile-w:clamp(26px,2.8vw,35px);--tile-h:48px;--tile-gap:3px}.flap-letter{font-size:24px}.hero h1.flip-heading{font-size:clamp(38px,4vw,56px)}}
+@media(max-width:780px){.hero h1.flip-heading{font-size:clamp(39px,7.2vw,56px);letter-spacing:-2px;max-width:610px}.flip-heading-outro{margin-top:18px}.flip-board-holder{margin-top:22px}.departure-board{--tile-w:clamp(25px,4.6vw,37px);--tile-h:49px;--tile-gap:3px}.flap-letter{font-size:25px}.city-comma{right:-18px;bottom:1px}}
+@media(max-width:480px){.hero h1.flip-heading{font-size:clamp(34px,9.1vw,44px);line-height:1.12;letter-spacing:-1.7px;margin:19px 0 21px}.flip-board-holder{margin:22px 4px 4px 0}.departure-board{--tile-w:clamp(21px,6.15vw,28px);--tile-h:42px;--tile-gap:2px}.flap-letter{font-size:20px}.flip-heading-outro{margin-top:16px}.city-comma{font-size:40px;right:-12px;bottom:4px}}
+@media(max-width:355px){.departure-board{--tile-w:20px;--tile-h:38px;--tile-gap:2px}.flap-letter{font-size:18px}.hero h1.flip-heading{font-size:34px}}
 @media(prefers-reduced-motion:reduce){.flap-letter.flipping .flap-top-turn,.flap-letter.flipping .flap-bottom-turn{animation:none;display:none}.departure-board{transform:none}}
 
   </style>
@@ -74,7 +71,6 @@
           <span class="flip-heading-intro">Weather from</span>
           <span class="flip-board-holder">
             <span class="departure-board" id="departure-board" role="img" aria-label="Boston" aria-roledescription="rotating city display">
-              <span class="departure-meta"><span class="departure-led" aria-hidden="true"></span><span>CITY FORECAST</span><span class="departure-meta-right">SKY / RIBBON</span></span>
               <span class="departure-letters" id="departure-letters" aria-hidden="true"></span>
             </span>
             <span class="city-comma" aria-hidden="true">,</span>
@@ -116,21 +112,28 @@
   const board = document.getElementById('departure-board');
   const holder = document.getElementById('departure-letters');
   if (!board || !holder) return;
+
   const cityNames = [
     'BOSTON','NEW YORK','HOUSTON','DENVER','CHICAGO','ATLANTA',
     'MIAMI','NASHVILLE','SEATTLE','PORTLAND','LOS ANGELES','CHARLOTTE'
   ];
   const slots = 11;
   const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const TOP_MS = 170;
+  const BOTTOM_MS = 190;
+  const STAGGER_MS = 24;
+  const PAUSE_MS = 3800;
   let current = 'BOSTON';
   let nextTimer = null;
   let animating = false;
   let previousIndex = 0;
   const entries = [];
+
   const fill = (text) => {
     const leading = Math.floor((slots - text.length) / 2);
-    return ' '.repeat(Math.max(0,leading)) + text + ' '.repeat(Math.max(0, slots - text.length - leading));
+    return ' '.repeat(Math.max(0, leading)) + text + ' '.repeat(Math.max(0, slots - text.length - leading));
   };
+
   const half = (part, cls, letter) => {
     const el = document.createElement('span');
     el.className = `flap-half ${part} ${cls}`;
@@ -138,65 +141,111 @@
     glyph.className = 'flap-glyph';
     glyph.textContent = letter === ' ' ? ' ' : letter;
     el.append(glyph);
-    return {el,glyph};
+    return { el, glyph };
   };
-  for(let i=0;i<slots;i++){
+
+  for (let i = 0; i < slots; i++) {
     const tile = document.createElement('span');
     tile.className = 'flap-letter';
     const t = half('top','flap-static-top',' ');
     const b = half('bottom','flap-static-bottom',' ');
     const ft = half('top','flap-top-turn',' ');
     const fb = half('bottom','flap-bottom-turn',' ');
-    tile.append(t.el,b.el,ft.el,fb.el);
+    tile.append(t.el, b.el, ft.el, fb.el);
     holder.append(tile);
-    entries.push({tile,t:t.glyph,b:b.glyph,ft:ft.glyph,fb:fb.glyph});
+    entries.push({ tile, t: t.glyph, b: b.glyph, ft: ft.glyph, fb: fb.glyph, swapTimer: null, doneTimer: null, startTimer: null });
   }
-  const glyph=(node,v)=>{node.textContent = v === ' ' ? ' ' : v};
-  const installStatic = (name) => {
-    const padded=fill(name);
-    entries.forEach((e,i)=>{ e.tile.classList.remove('flipping'); glyph(e.t,padded[i]); glyph(e.b,padded[i]); });
-    board.setAttribute('aria-label',name);
-  };
-  installStatic(current);
-  function setCity(name){
-    if(animating || document.hidden || motionReduced.matches) return;
-    animating = true;
-    const prev = fill(current), dest = fill(name);
-    const active = [];
-    entries.forEach((e,i)=>{
-      if(prev[i] === dest[i]) return;
-      glyph(e.t,prev[i]);
-      glyph(e.b,dest[i]);
-      glyph(e.ft,prev[i]);
-      glyph(e.fb,dest[i]);
-      const delay = i * 38;
-      const timeout = setTimeout(() => e.tile.classList.add('flipping'), delay);
-      active.push({e,timeout});
+
+  const glyph = (node, value) => { node.textContent = value === ' ' ? ' ' : value; };
+
+  function installStatic(name) {
+    const padded = fill(name);
+    entries.forEach((e, i) => {
+      e.tile.classList.remove('flipping');
+      glyph(e.t, padded[i]);
+      glyph(e.b, padded[i]);
+      glyph(e.ft, padded[i]);
+      glyph(e.fb, padded[i]);
+      clearTimeout(e.swapTimer);
+      clearTimeout(e.doneTimer);
+      clearTimeout(e.startTimer);
     });
+    board.setAttribute('aria-label', name);
+  }
+
+  installStatic(current);
+
+  function setCity(name) {
+    if (animating || document.hidden || motionReduced.matches) return;
+    animating = true;
+    const prev = fill(current);
+    const dest = fill(name);
+    let maxDelay = 0;
+
+    entries.forEach((e, i) => {
+      if (prev[i] === dest[i]) return;
+      const delay = i * STAGGER_MS;
+      maxDelay = Math.max(maxDelay, delay);
+
+      // Keep both static halves on the old character until the top flap finishes.
+      glyph(e.t, prev[i]);
+      glyph(e.b, prev[i]);
+      glyph(e.ft, prev[i]);
+      glyph(e.fb, dest[i]);
+
+      e.startTimer = setTimeout(() => {
+        e.tile.classList.add('flipping');
+      }, delay);
+
+      e.swapTimer = setTimeout(() => {
+        glyph(e.t, dest[i]);
+        glyph(e.b, dest[i]);
+      }, delay + TOP_MS);
+
+      e.doneTimer = setTimeout(() => {
+        e.tile.classList.remove('flipping');
+        glyph(e.ft, dest[i]);
+        glyph(e.fb, dest[i]);
+      }, delay + TOP_MS + BOTTOM_MS + 10);
+    });
+
     window.setTimeout(() => {
       current = name;
       installStatic(name);
       animating = false;
       schedule();
-    }, 520 + slots * 38);
+    }, maxDelay + TOP_MS + BOTTOM_MS + 40);
   }
-  function schedule(){
+
+  function schedule() {
     clearTimeout(nextTimer);
-    if(document.hidden || motionReduced.matches) return;
-    nextTimer=setTimeout(()=>{
+    if (document.hidden || motionReduced.matches) return;
+    nextTimer = setTimeout(() => {
       let choice;
-      do {choice = Math.floor(Math.random() * cityNames.length)} while (choice===previousIndex);
-      previousIndex=choice;
+      do { choice = Math.floor(Math.random() * cityNames.length); } while (choice === previousIndex);
+      previousIndex = choice;
       setCity(cityNames[choice]);
-    },3600);
+    }, PAUSE_MS);
   }
-  document.addEventListener('visibilitychange',()=>{
-    if(!document.hidden){ if(animating)return; schedule(); }
-    else clearTimeout(nextTimer);
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      if (animating) return;
+      schedule();
+    } else {
+      clearTimeout(nextTimer);
+    }
   });
-  motionReduced.addEventListener?.('change',()=>{
-    if(motionReduced.matches){clearTimeout(nextTimer);installStatic(current);}else schedule();
+
+  motionReduced.addEventListener?.('change', () => {
+    if (motionReduced.matches) {
+      clearTimeout(nextTimer);
+      installStatic(current);
+    } else {
+      schedule();
+    }
   });
+
   schedule();
 })();
 </script>
